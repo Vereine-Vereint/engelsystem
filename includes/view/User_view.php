@@ -835,7 +835,7 @@ function User_view_state($admin_user_privilege, $freeloader, $user_source)
                 . sprintf(
                     __('Arrived at %s'),
                     $user_source->state->arrival_date
-                        ? $user_source->state->arrival_date->format(__('general.date')) : ''
+                        ? $user_source->state->arrival_date->format(__('general.datetime')) : ''
                 )
                 . '</span>';
 
@@ -859,7 +859,7 @@ function User_view_state($admin_user_privilege, $freeloader, $user_source)
             $state[] = '<span class="text-danger">'
                 . ($arrivalDate ? sprintf(
                     __('Not arrived (Planned: %s)'),
-                    $arrivalDate->format(__('general.date'))
+                    $arrivalDate->format(__('general.datetime'))
                 ) : __('Not arrived'))
                 . '</span>';
         } else {

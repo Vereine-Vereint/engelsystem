@@ -62,6 +62,4 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: 1
       MYSQL_INITDB_SKIP_TZINFO: "yes"
     volumes:
-      - db:/var/lib/mysql
-volumes:
-  db: {}
+      - ./db:/var/lib/mysql

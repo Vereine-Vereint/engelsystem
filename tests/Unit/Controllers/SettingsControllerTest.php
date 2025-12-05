@@ -47,8 +47,8 @@ class SettingsControllerTest extends ControllerTest
             'pronoun'                => 'Herr',
             'first_name'             => 'John',
             'last_name'              => 'Doe',
-            'planned_arrival_date'   => '2022-01-01',
-            'planned_departure_date' => '2022-01-02',
+            'planned_arrival_date'   => '2022-01-01 12:00',
+            'planned_departure_date' => '2022-01-02 12:00',
             'dect'                   => '1234',
             'mobile'                 => '0123456789',
             'mobile_show'            => true,
@@ -122,11 +122,11 @@ class SettingsControllerTest extends ControllerTest
         $this->assertEquals($body['last_name'], $this->user->personalData->last_name);
         $this->assertEquals(
             $body['planned_arrival_date'],
-            $this->user->personalData->planned_arrival_date->format('Y-m-d')
+            $this->user->personalData->planned_arrival_date->format('Y-m-d H:i')
         );
         $this->assertEquals(
             $body['planned_departure_date'],
-            $this->user->personalData->planned_departure_date->format('Y-m-d')
+            $this->user->personalData->planned_departure_date->format('Y-m-d H:i')
         );
         $this->assertEquals($body['dect'], $this->user->contact->dect);
         $this->assertEquals($body['mobile'], $this->user->contact->mobile);

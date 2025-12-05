@@ -44,7 +44,7 @@ trait ChecksArrivalsAndDepartures
 
     private function toCarbon(?string $date_string): ?Carbon
     {
-        $dateTime = DateTime::createFromFormat('Y-m-d', $date_string ?: '');
+        $dateTime = DateTime::createFromFormat('Y-m-d\TH:i', $date_string ?: '');
         return $dateTime ? new Carbon($dateTime) : null;
     }
 

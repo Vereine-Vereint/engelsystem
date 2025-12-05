@@ -116,9 +116,9 @@ function admin_arrive()
         $arrivalDate = $usr->state->arrival_date;
         $plannedArrivalDate = $usr->personalData->planned_arrival_date;
         $usr['rendered_planned_departure_date'] = $plannedDepartureDate
-            ? $plannedDepartureDate->format(__('general.date'))
+            ? $plannedDepartureDate->format(__('general.datetime'))
             : '-';
-        $usr['rendered_planned_arrival_date'] = $plannedArrivalDate ? $plannedArrivalDate->format(__('general.date')) : '-';
+        $usr['rendered_planned_arrival_date'] = $plannedArrivalDate ? $plannedArrivalDate->format(__('general.datetime')) : '-';
         $usr['rendered_arrival_date'] = $arrivalDate ? $arrivalDate->format(__('general.date')) : '-';
         $usr['arrived'] = icon_bool($usr->state->arrived);
         $usr['actions'] = form([

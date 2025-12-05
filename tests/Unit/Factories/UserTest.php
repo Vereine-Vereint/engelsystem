@@ -146,7 +146,6 @@ class UserTest extends ServiceProviderTest
                 'planned_arrival_date' => [
                     'validation.planned_arrival_date.required',
                     'validation.planned_arrival_date.date',
-                    'validation.planned_arrival_date.min',
                 ],
                 'tshirt_size' => [
                     'validation.tshirt_size.required',
@@ -174,7 +173,7 @@ class UserTest extends ServiceProviderTest
                 'email' => 'notanemail',
                 'password' => 'a',
                 'tshirt_size' => 'A',
-                'planned_arrival_date' => $this->now->subDays(7)->format('Y-m-d'),
+                'planned_arrival_date' => $this->now->subDays(7)->format('Y-m-d H:i'),
                 'dect' => str_repeat('a', 50),
                 'mobile' => str_repeat('a', 50),
             ],
@@ -231,7 +230,7 @@ class UserTest extends ServiceProviderTest
             'email' => 'fritz@example.com',
             'password' => 's3cret',
             'password_confirmation' => 's3cret',
-            'planned_arrival_date' => $this->now->format('Y-m-d'),
+            'planned_arrival_date' => $this->now->format('Y-m-d H:i'),
             'tshirt_size' => 'M',
             'mobile_show' => 1,
             'email_system' => 1,
@@ -242,8 +241,8 @@ class UserTest extends ServiceProviderTest
         $this->assertSame('fritz@example.com', $user->email);
         $this->assertTrue(password_verify('s3cret', $user->password));
         $this->assertSame(
-            $this->now->format('Y-m-d'),
-            $user->personalData->planned_arrival_date->format('Y-m-d')
+            $this->now->format('Y-m-d H:i'),
+            $user->personalData->planned_arrival_date->format('Y-m-d H:i')
         );
         $this->assertTrue($user->settings->mobile_show);
         $this->assertTrue($user->settings->email_shiftinfo);
@@ -413,7 +412,7 @@ class UserTest extends ServiceProviderTest
                 'email' => 'fritz@example.com',
                 'password' => 's3cret',
                 'password_confirmation' => 's3cret',
-                'planned_arrival_date' => $this->now->subDays(7)->format('Y-m-d'),
+                'planned_arrival_date' => $this->now->subDays(7)->format('Y-m-d H:i'),
             ],
             [
                 'planned_arrival_date' =>  [

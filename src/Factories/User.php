@@ -129,13 +129,13 @@ class User
             if ($tearDownEndDate) {
                 $validationRules['planned_arrival_date'] = sprintf(
                     'required|date|between:%s:%s',
-                    $isoBuildUpStartDate->format('Y-m-d'),
-                    $tearDownEndDate->format('Y-m-d')
+                    $isoBuildUpStartDate->format('Y-m-d\\TH:i'),
+                    $tearDownEndDate->format('Y-m-d\\TH:i')
                 );
             } else {
                 $validationRules['planned_arrival_date'] = sprintf(
                     'required|date|min:%s',
-                    $isoBuildUpStartDate->format('Y-m-d'),
+                    $isoBuildUpStartDate->format('Y-m-d\\TH:i'),
                 );
             }
         }
@@ -242,7 +242,7 @@ class User
         $plannedArrivalDate = null;
 
         if ($isPlannedArrivalDateEnabled) {
-            $plannedArrivalDate = Carbon::createFromFormat('Y-m-d', $data['planned_arrival_date']);
+            $plannedArrivalDate = Carbon::createFromFormat('Y-m-d\TH:i', $data['planned_arrival_date']);
         }
 
         $personalData = new PersonalData([

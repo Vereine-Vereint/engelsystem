@@ -132,9 +132,9 @@ EOT;
             }
         }
         $u['arrival_date'] = $user->personalData->planned_arrival_date
-            ? $user->personalData->planned_arrival_date->format(__('general.date')) : '';
+            ? $user->personalData->planned_arrival_date->format(__('general.datetime')) : '';
         $u['departure_date'] = $user->personalData->planned_departure_date
-            ? $user->personalData->planned_departure_date->format(__('general.date')) : '';
+            ? $user->personalData->planned_departure_date->format(__('general.datetime')) : '';
         $u['last_login_at'] = $user->last_login_at ? $user->last_login_at->format(__('general.datetime')) : '';
         $u['actions'] = table_buttons([
             button(

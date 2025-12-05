@@ -475,8 +475,8 @@ class SettingsController extends BaseController
             'email_goodie' => 'optional|checked',
         ];
         if (config('enable_planned_arrival')) {
-            $rules['planned_arrival_date'] = 'required|date:Y-m-d';
-            $rules['planned_departure_date'] = 'optional|date:Y-m-d';
+            $rules['planned_arrival_date'] = ['required', ['dateTime', 'Y-m-d\\TH:i']];
+            $rules['planned_departure_date'] = ['optional', ['dateTime', 'Y-m-d\\TH:i']];
         }
         if ($goodie_tshirt && !$user->state->got_goodie) {
             $rules['shirt_size'] = $this->isRequired('tshirt_size') . '|shirt_size';

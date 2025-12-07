@@ -65,8 +65,13 @@ class ConfigServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Try to get EventConfig from the container if not injected
         if (!$this->eventConfig) {
-            return;
+            try {
+                $this->eventConfig = $this->app->make(EventConfig::class);
+            } catch (\Exception) {
+                return;
+            }
         }
 
         /** @var Config $config */
